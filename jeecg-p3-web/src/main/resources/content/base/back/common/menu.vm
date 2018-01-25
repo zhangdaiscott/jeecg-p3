@@ -1,0 +1,85 @@
+<div class="col-md-2 ">
+		<div class="bs_border h95">
+			<span class="apply">
+				<a href="www.jeecg.org">
+					官方网站
+				</a>
+			</span>
+			<span class="SubM">
+				<a href="javascript:void(0);">
+					开发指南
+				</a>
+			</span>
+		</div>
+		<div class="bs_border accor" style="padding:0;">
+			<div id="accordion">
+		         <div>
+					<h5 class="a_right"><a href="javascript:void(0);">H5互动页面</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/basic_gallery.html')">相册</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/contacts.html')">联系人</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/profile.html')">联系人详细</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/graph_flot.html')">报表</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/invoice_print.html')">打印</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/index_v3.html')">订单报表</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/mail_detail.html')">邮件内容</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/mailbox.html')">邮箱</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/pin_board.html')">留言墙</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3test.do?page&url=oa/test/webim.html')">聊天窗</a></li> 
+		            </ul>
+				</div>
+				<div>
+					<h5 class="a_right"><a href="javascript:void(0);">演示示例</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/p3/wxActInvite.do?list')">普通列表</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/p3/auth.do?list')">树列表</a></li>
+		            </ul>
+				</div>
+				<div>
+					<h5 class="a_right"><a href="javascript:void(0);">微信素材</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxTexttemplate.do?list')">文本消息</a></li> 
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxNewstemplate.do?list')">图文消息</a></li>
+		            </ul>
+		        </div>
+				<div>
+					<h5 class="a_right"><a href="javascript:void(0);">消息管理</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxReceivetext.do?list')">用户消息</a></li>
+		            </ul>
+		        </div>
+				<div>
+					<h5 class="a_right"><a href="javascript:void(0);">基础管理</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxAutoresponse.do?list')">关键字管理</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxGzentity.do?list')">关注回复</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxGroup.do?list')">关注用户组</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxGzuserinfo.do?list')">关注用户</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxReceivetext.do?list')">用户消息</a></li>
+		            </ul>
+		        </div>
+				<div>
+					<h5 class="a_right"><a href="javascript:void(0);">基础管理</a></h5>
+		             <ul>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxAccount.do?list')">企业号管理</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxAgent.do?list')">应用管理</a></li>
+		                <li><a href="javascript:loadContent('$!{basePath}/qywx/qywxMenu.do?list')">菜单管理</a></li>
+		            </ul>
+		        </div>
+		    </div>	
+		</div>
+		<div class="bs_border h85">
+			<p>Jeecg-P3 插件开发平台</p>
+			<p>Email: scott@jeecg.org</p>
+			<p>论坛 :  www.jeecg.org</p>
+		</div>		
+</div>
+
+<script type="text/javascript">
+	 /**加载主体页面**/
+    function loadContent(url){
+			//location.href="#navi";
+			$("#center").attr("src",url);
+	}
+	control(); 
+</script>

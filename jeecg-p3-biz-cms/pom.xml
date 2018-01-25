@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	
+	<groupId>org.p3framework</groupId>
+	<artifactId>jeecg-p3-biz-cms</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	
+	<parent>
+		<groupId>org.p3framework</groupId>
+		<artifactId>jeecg-p3-pom</artifactId>
+		<version>1.0.0</version>
+	</parent>
+	
+	<repositories>
+		<repository>
+            <id>jeecg</id>
+            <name>jeecg Repository</name>
+            <url>http://maven.jeecg.org/nexus/content/repositories/jeecg</url>
+            <snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+        </repository>
+    </repositories>
+    
+	<dependencies>
+		<dependency>
+			<groupId>org.p3framework</groupId>
+			<artifactId>jeecg-p3-core</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+		<dependency>
+			<groupId>org.p3framework</groupId>
+			<artifactId>jeecg-p3-ui</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>jar</type>
+		</dependency>
+	</dependencies>
+    
+</project>

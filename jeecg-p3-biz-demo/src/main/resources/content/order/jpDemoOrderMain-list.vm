@@ -1,0 +1,127 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html>
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/demo/jpDemoOrderMain.do?list" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+					<div class="panel panel-default">
+						<div class="panel-heading">列表</div>
+						<div class="panel-body">
+							<div class="search">
+										 <div class="form-group col-sm-3">
+											<label for="goContactName" class="control-label col-sm-3 line34">联系人</label>
+											<div class="col-sm-8">
+												<input type="text" name="goContactName" id="goContactName" value="$!{jpDemoOrderMain.goContactName}" class="form-control">
+											</div>
+										 </div>
+										  <div class="form-group col-sm-3">
+											<label for="goTelphone" class="control-label col-sm-3 line34">手机</label>
+											<div class="col-sm-8">
+												<input type="text" name="goTelphone" id="goTelphone" value="$!{jpDemoOrderMain.goTelphone}" class="form-control">
+											</div>
+										 </div>
+										 <div class="form-group col-sm-3">
+											<label for="goderType" class="control-label col-sm-3 line34">订单类型</label>
+											<div class="col-sm-8">
+												<!-- //update-begin--Author:zhangjiaqiang  Date:20160906 for：【插件demo】一对多，明细行间距太大 -->
+												<select name="goderType" id="goderType" class="form-control">
+                                                    <option value="">--请选择--</option>
+    												<option value="1" #if($!jpDemoOrderMain.goderType == "1")selected="selected"#end>普通订单</option>
+    												<option value="2" #if($!jpDemoOrderMain.goderType == "2")selected="selected"#end>优质订单</option>
+    											</select>
+												<!-- //update-end--Author:zhangjiaqiang  Date:20160906 for：【插件demo】一对多，明细行间距太大 -->
+											</div>
+										 </div>
+										 <div class="form-group col-sm-3">
+											<label for="goOrderCode" class="control-label col-sm-3 line34">订单号</label>
+											<div class="col-sm-8">
+												<input type="text" name="goOrderCode" id="goOrderCode" value="$!{jpDemoOrderMain.goOrderCode}" class="form-control">
+											</div>
+										 </div>
+										 <div class="form-group col-sm-3">
+											<label for="goOrderCount" class="control-label col-sm-3 line34">订单人数</label>
+											<div class="col-sm-8">
+												<input type="text" name="goOrderCount" id="goOrderCount" value="$!{jpDemoOrderMain.goOrderCount}" class="form-control">
+											</div>
+										 </div>
+										 <div class="form-group col-sm-3">
+											<label for="usertype" class="control-label col-sm-3 line34">顾客类型</label>
+											<div class="col-sm-8">
+												<!-- //update-begin--Author:zhangjiaqiang  Date:20160906 for：【插件demo】一对多，明细行间距太大 -->
+												<select name="usertype" id="usertype" class="form-control">
+                                                    <option value="">--请选择--</option>
+    												<option value="1" #if($!jpDemoOrderMain.usertype == "1")selected="selected"#end>普通客户</option>
+    												<option value="2" #if($!jpDemoOrderMain.usertype == "2")selected="selected"#end>签约客户</option>
+												</select>
+												<!-- //update-end--Author:zhangjiaqiang  Date:20160906 for：【插件demo】一对多，明细行间距太大 -->
+											</div>
+										 </div>
+										 <div class="form-group col-sm-3">
+											<label for="goContent" class="control-label col-sm-3 line34">备注</label>
+											<div class="col-sm-8">
+												<input type="text" name="goContent" id="goContent" value="$!{jpDemoOrderMain.goContent}" class="form-control">
+											</div>
+										 </div>
+								<button type="submit" class="btn btn-primary">搜  索</button>
+								<div class="clearfix"></div>
+							</div>
+							<div id="legend">
+								<legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/demo/jpDemoOrderMain.do?toAdd')" >新增</button></legend> 
+							</div>
+							<table class="table table-striped">
+								<thead>
+											
+											<th>订单号</th>
+											<th>联系人</th>
+											<th>顾客类型</th>
+											<th>手机</th>
+											<th>订单人数</th>
+											<th>订单类型</th>
+											<th>返款</th>
+											<th>总价(不含返款)</th>
+											<th>创建时间</th>
+											<th>备注</th>
+									<th>操作</th>
+								</thead>
+								<tbody>
+								#if($!{pageInfos})
+									#foreach($!{info} in $!{pageInfos})
+										<tr>			
+														
+														<td>$!{info.goOrderCode}</td>
+														<td>$!{info.goContactName}</td>
+														<td>#if($!info.usertype == '1')普通客户#elseif($!info.usertype == '2')签约客户#end</td>
+														<td>$!{info.goTelphone}</td>
+														<td>$!{info.goOrderCount}</td>
+														<td>#if($!info.goderType == '1')普通订单#elseif($!info.goderType == '2')优质订单#end</td>
+														<td>$!{info.goAllPrice}</td>
+														<td>$!{info.goReturnPrice}</td>
+														<td>$!dateTool.format("yyyy-MM-dd",$!{info.createDt})</td>
+														<td>$!{info.goContent}</td>
+											<td class="last">
+											<a href="javascript:doUrl('$!{basePath}/demo/jpDemoOrderMain.do?toEdit&id=$!{info.id}')" >编辑</a>
+											<a href="javascript:delData('$!{basePath}/demo/jpDemoOrderMain.do?doDelete&id=$!{info.id}')">删除</a>
+											<a href="javascript:doUrl('$!{basePath}/demo/jpDemoOrderMain.do?toDetail&id=$!{info.id}')">详情</a>
+											</td>
+										</tr>
+									 #end
+								 #end
+								</tbody>
+							</table>
+							<div class="text-right">
+								<!--公用翻页代码-->
+								#set($attr='formSubmit')
+								#showPageList($pageInfos $attr)
+								<!--END公用翻页代码-->
+							</div>
+						</div>
+					</div>
+				</div>  
+			</form>
+		</div>
+	</div>
+</body>
+</html>

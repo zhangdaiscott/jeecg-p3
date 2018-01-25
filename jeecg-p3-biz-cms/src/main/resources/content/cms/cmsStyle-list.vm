@@ -1,0 +1,56 @@
+#parse("content/base/back/common/macro.vm")
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<form role="form" class="form-inline" action="$!{basePath}/p3/cms/cmsStyle.do?list" method="post"  id="formSubmit">
+				<div  class="col-md-10" style="width:100%">
+					<div class="panel panel-default">
+						<div class="panel-heading">模板列表</div>
+						<div class="panel-body">
+							<div class="search"></div>
+							<div id="legend">
+								<legend  class="le"><button type="button" class="btn btn-primary" onclick="doUrl('$!{basePath}/p3/cms/cmsStyle.do?toAdd')" >新增</button></legend>
+							</div>
+							<table class="table table-striped">
+								<thead>
+									<th>ID</th>
+                                    <th>模板名称</th>
+                                    <th>预览图</th>
+                                    <th>文件地址</th>
+                                    <th>操作</th>
+								</thead>
+								<tbody>
+									#if($!{pageInfos})
+										#foreach($!{info} in $!{pageInfos})
+											<tr>
+												<td>$!{info.id}</td>
+												<td>$!{info.templateName}</td>
+												<td>$!{info.reviewImgUrl}</td>
+												<td>$!{info.templateUrl}</td>
+												<td class="last">
+													<a href="javascript:doUrl('$!{basePath}/p3/cms/cmsStyle.do?toEdit&id=$!{info.id}')" >编辑</a>
+													<a href="javascript:delData('$!{basePath}/p3/cms/cmsStyle.do?doDelete&id=$!{info.id}')">删除</a>
+													<a href="javascript:doUrl('$!{basePath}/p3/cms/cmsStyle.do?toDetail&id=$!{info.id}')">详情</a>
+												</td>
+											</tr>
+										#end
+									#end
+								</tbody>
+							</table>
+							<div class="text-right">
+								<!--公用翻页代码-->
+								#set($attr='formSubmit')
+								#showPageList($pageInfos $attr)
+								<!--END公用翻页代码-->
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

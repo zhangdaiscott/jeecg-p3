@@ -1,0 +1,234 @@
+#set($version='?v=0.0.7')
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<!--UEditor-->
+<script type="text/javascript"  charset="utf-8" src="$!{basePath}/content/plug-in/ueditor/ueditor.config.js"></script>
+<script type="text/javascript"  charset="utf-8" src="$!{basePath}/content/plug-in/ueditor/ueditor.all.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="$!{basePath}/content/plug-in/ueditor/lang/zh-cn/zh-cn.js"></script>
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">新增</div>
+				<div class="panel-body">
+					<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/p3/cms/cmsArticle.do?doAdd" method="POST">
+						<input type="hidden" id="btn_sub" class="btn_sub" />
+						<div class="form-group mno">
+							<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">标题</label>
+							<div class="col-sm-8">
+								<input type="text" name="title" id="title" class="form-control" datatype="*"/>
+							</div>
+						</div>
+						
+						<div class="form-group mno">
+							<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">栏目</label>
+							<div class="col-sm-8">
+								<input type="text" value="" id="columnId" readonly class="form-control" onclick="showMenu();"/>
+								<input type="hidden" name="columnId" id="pId" />
+							</div>
+						</div>
+						
+						<div class="form-group mno">
+							<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">是否发布</label>
+							<div class="col-sm-8">
+								<select name="publish" id="publish"  class="form-control">
+									<option value="Y">是</option>
+									<option value="N">否</option>
+								</select>
+							</div>
+						</div>
+						
+						<div class="form-group mno">
+							<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">发布时间</label>
+							<div class="col-sm-8">
+								<input type="text" value="$!dateTool.format("yyyy-MM-dd",$!{cmsArticle.publishDate})" name="publishDate" id="publishDate" class="form-control" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"   style="background: url('$!{basePath}/plug-in-ui/images/datetime.png') no-repeat scroll right center transparent;" datatype="*"/>
+							</div>
+						</div>
+						
+						<div class="form-group mno">
+							<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">作者</label>
+							<div class="col-sm-8">
+								<input type="text" name="author" id="author" class="form-control" datatype="*"/>
+							</div>
+						</div>
+						
+						<div class="form-group mno">
+							<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">标签</label>
+							<div class="col-sm-8">
+								<input type="text" name="label" id="label" class="form-control" datatype="*"/>
+							</div>
+						</div>
+						
+						<div class="form-group mno">
+							<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">图片地址</label>
+							<div class="col-sm-8">
+								<input type="hidden" id="imageHref" name="imageHref" />
+								<div id="fileQueue" style="width:200px;"></div>
+								<input type="file" name="uploadify" id="uploadify" />
+								<div id="pic_view_div" style="width:150px; height:180px; display:none;">
+									<img src="#" width="150" height="180" id="pic_view" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="form-group mno">
+							<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:left;">内容</label>
+							<div class="col-sm-8">
+								<textarea name="content" id="content" style="width: 880px;height:300px"></textarea>
+							    <script type="text/javascript">
+							        var editor = UE.getEditor('content');
+							    </script>
+							</div>
+						</div>
+                        <div class="form-group mno">
+							<div class="col-sm-offset-1 col-sm-6">
+								<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/p3/cms/cmsArticle.do?list')">返回</button>
+								<button type="button" class="btn btn-primary" id="formSubmit">提交</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+    	<ul id="treeDemo" class="ztree" style="margin-top:0; width:160px;"></ul>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.core.js$!{version}"></script>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.excheck.js$!{version}"></script>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/zTree/jquery.ztree.exedit.js$!{version}"></script>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script> 
+<script type="text/javascript">
+	var IDMark_A = "_a";
+    
+	function showMenu() {
+		var cityObj = jQuery("#columnId");
+		var cityOffset = jQuery("#columnId").offset();
+    	if(jQuery("#menuContent").is(':hidden')){
+         jQuery("#menuContent").css({left:cityOffset.left + "px", top:cityOffset.top + cityObj.outerHeight() + "px"}).slideDown("fast");
+    	}else{
+    	  jQuery("#menuContent").fadeOut("fast");
+    	}
+        jQuery("body").bind("mousedown", onBodyDown);
+    }
+    function hideMenu() {
+    	jQuery("#menuContent").fadeOut("fast");
+    	jQuery("body").unbind("mousedown", onBodyDown);
+    }
+    function onBodyDown(event) {
+    	if (!(event.target.id == "columnId" || event.target.id == "menuContent" || jQuery(event.target).parents("#menuContent").length>0)) {
+    		hideMenu();
+    	}
+    }
+	
+	var setting = {
+		check: {
+			enable: true,
+			chkStyle: "radio",
+			radioType: "all"
+		},
+		view: {
+			addHoverDom: addHoverDom,
+			removeHoverDom: removeHoverDom,
+			dblClickExpand: false
+		},
+		data: {
+			simpleData: {
+				enable: true,
+				idKey: "id",
+				pIdKey: "parentCode",
+				rootPId: null
+			}
+		},
+		callback: {
+			onClick: onClick,
+			onCheck: onCheck
+		}
+	};
+    function onClick(e, treeId, treeNode) {
+       var tree = zTree.getZTreeObj("treeDemo");
+    	tree.checkNode(treeNode, !treeNode.checked, null, true);
+    	return false;
+    }
+    function onCheck(e, treeId, treeNode) {
+    	var tree = zTree.getZTreeObj("treeDemo"),
+    	nodes = tree.getCheckedNodes(true),
+    	v = "",vid = "";
+    	for (var i=0, l=nodes.length; i<l; i++) {
+    		v += nodes[i].name + ",";
+    		vid += nodes[i].id + ",";
+    	}
+    	if (v.length > 0 ) v = v.substring(0, v.length-1);
+    	if (vid.length > 0 ) vid = vid.substring(0, vid.length-1);
+    	jQuery("#columnId").val(v);
+		$("#pId").val(vid);
+    }
+    function addHoverDom(treeId, treeNode) {
+    	if (treeNode.parentNode && treeNode.parentNode.id!=1) return;
+    	var aObj = jQuery("#" + treeNode.tId + IDMark_A);
+    		if (jQuery("#diyBtn_"+treeNode.id).length>0) return;
+    		var editStr = "<span id='diyBtn_" +treeNode.id+ "'>编码:"+treeNode.id+"</span>";
+    		aObj.after(editStr);
+    }
+    function removeHoverDom(treeId, treeNode) {
+    		jQuery("#diyBtn_"+treeNode.id).unbind().remove();
+    		jQuery("#diyBtn_space_" +treeNode.id).unbind().remove();
+    }
+	
+    var zNodes;
+    jQuery(document).ready(function(){
+    	jQuery.ajax({  
+	        async : false,  
+	        cache:false,  
+	        type: 'POST',  
+	        dataType : "json",  
+	        url: '$!{basePath}/p3/cms/cmsMenu.do?tree',//请求的action路径  
+	        error: function () {//请求失败处理函数  
+	            alert('请求失败');  
+	        },  
+	        success:function(data){ //请求成功后处理函数。    
+	            zNodes = data;   //把后台封装好的简单Json格式赋给zNodes  
+	        }  
+	    });  
+    	zTree.init(jQuery("#treeDemo"), setting, zNodes);
+    });
+</script>
+
+######################上传部分js#######################################################################
+<script src="$!{basePath}/content/plug-in/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" href="$!{basePath}/content/plug-in/uploadify/uploadify.css" />
+<script type="text/javascript">
+    $(function(){
+		$("#uploadify").uploadify({
+            'swf'            : '$!{basePath}/content/plug-in/uploadify/uploadify.swf',  
+            'uploader'       : '$!{basePath}/p3/cms/upload/doUpload.do',
+            'queueID'        : 'fileQueue',  
+            'auto'           : true,  
+            'multi'          : true,
+            'buttonCursor'   : 'hand',  
+            'dataType' : 'json',
+            'fileObjName'    : 'file',  
+            'buttonText'     : '上传图片',  
+            'height'         : '25',  
+            'progressData'   : 'percentage',  
+            'fileTypeDesc'   : '支持格式:jpg/gif/jpeg/png/bmp.',    
+            'fileTypeExts': '*.jpg;*.gif;*.jpeg;*.png;*.bmp',//允许的格式         
+            onUploadStart : function(file) {
+                   alert("建议上传1:1比例的图片");
+            },
+            'onUploadSuccess' : function(file, data, response) { 
+            
+            var parsedJson = jQuery.parseJSON(data); 
+                //设置图片预览  
+                $("#imageHref").val(parsedJson.obj);
+    			$("#pic_view_div").show();
+                $("#pic_view").attr("src",'$!{basePath}/upload/img/cms/' + parsedJson.obj);  
+            }  
+        });
+    });
+</script>

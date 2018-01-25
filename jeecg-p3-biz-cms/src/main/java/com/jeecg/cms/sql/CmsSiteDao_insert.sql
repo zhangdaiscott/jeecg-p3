@@ -1,0 +1,25 @@
+INSERT  INTO
+	cms_site
+      ( 
+      ID                            
+      ,COMPANY_TEL     
+      ,CREATE_DATE                    
+      ,CREATE_NAME                    
+      ,SITE_LOGO                      
+      ,SITE_NAME                      
+      ,SITE_TEMPLATE_STYLE            
+      ,UPDATE_DATE                    
+      ,UPDATE_NAME                    
+      ) 
+values
+      (
+      :cmsSite.id                            
+      ,:cmsSite.companyTel                        
+      ,:cmsSite.createDate                    
+      ,:cmsSite.createName                    
+      ,:cmsSite.siteLogo                      
+      ,:cmsSite.siteName                      
+      ,:cmsSite.siteTemplateStyle             
+      ,:cmsSite.updateDate                    
+      ,:cmsSite.updateName                    
+      )

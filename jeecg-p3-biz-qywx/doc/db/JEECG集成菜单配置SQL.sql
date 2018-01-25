@@ -1,0 +1,20 @@
+
+INSERT INTO `t_s_function` VALUES ('4128abbd540dbc1701540dbddb1b0001', NULL, '0', '账号管理', '1', '', NULL, '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', 'admin', '管理员', NULL, NULL, '2016-04-13 11:50:27', NULL);
+INSERT INTO `t_s_function` VALUES ('41288388540ac6a601540adb68040013', NULL, '1', '企业号管理', '4', 'qywx/qywxAccount.do?list', '4128abbd540dbc1701540dbddb1b0001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:15', NULL, '管理员');
+INSERT INTO `t_s_function` VALUES ('41288388540ac6a601540adbc3670015', NULL, '1', '应用管理', '5', 'qywx/qywxAgent.do?list', '4128abbd540dbc1701540dbddb1b0001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:22', NULL, '管理员');
+
+INSERT INTO `t_s_function` VALUES ('4228abbd540dbc1701540dbddb1b0001', NULL, '0', '基础管理', '2', '', NULL, '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', 'admin', '管理员', NULL, NULL, '2016-04-13 11:50:27', NULL);
+INSERT INTO `t_s_function` VALUES ('42288388540ac6a601540adb68040013', NULL, '1', '关键字管理', '4', 'qywx/qywxAutoresponse.do?list', '4228abbd540dbc1701540dbddb1b0001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:15', NULL, '管理员');
+INSERT INTO `t_s_function` VALUES ('42288388540ac6a601540adbc3670015', NULL, '1', '关注回复', '5', 'qywx/qywxGzentity.do?list', '4228abbd540dbc1701540dbddb1b0001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:22', NULL, '管理员');
+INSERT INTO `t_s_function` VALUES ('4288388540ac6a601540adbc3670015', NULL, '1', '菜单管理', '5', 'qywx/qywxMenu.do?list', '4228abbd540dbc1701540dbddb1b0001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:22', NULL, '管理员');
+
+
+INSERT INTO `t_s_function` VALUES ('4228abd540dbc1701540dbddb1b0001', NULL, '0', '微信素材', '3', '', NULL, '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', 'admin', '管理员', NULL, NULL, '2016-04-13 11:50:27', NULL);
+INSERT INTO `t_s_function` VALUES ('4228838540ac6a601540adb68040013', NULL, '1', '文本消息', '4', 's', '4228abd540dbc1701540dbddb1b0001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:15', NULL, '管理员');
+INSERT INTO `t_s_function` VALUES ('4228838540ac6a601540adbc3670015', NULL, '1', '图文消息', '5', 'qywx/qywxNewstemplate.do?list', '4228abd540dbc1701540dbddb1b0001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:22', NULL, '管理员');
+
+
+INSERT INTO `t_s_function` VALUES ('4228abd540dbc1701540dbddb1b001', NULL, '0', '消息管理', '4', '', NULL, '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', 'admin', '管理员', NULL, NULL, '2016-04-13 11:50:27', NULL);
+INSERT INTO `t_s_function` VALUES ('4228838540ac6a601540adb6804013', NULL, '1', '用户消息', '4', 'qywx/qywxReceivetext.do?list', '4228abd540dbc1701540dbddb1b001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:15', NULL, '管理员');
+INSERT INTO `t_s_function` VALUES ('4228838540ac6a601540adbc367015', NULL, '1', '关注用户', '5', 'qywx/qywxGzuserinfo.do?list', '4228abd540dbc1701540dbddb1b001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:22', NULL, '管理员');
+INSERT INTO `t_s_function` VALUES ('4228838540ac6a601540adbc36c015', NULL, '1', '通讯录', '5', 'qywx/qywxGroup.do?list', '4228abd540dbc1701540dbddb1b001', '8a8ab0b246dc81120146dc8180460000', '8a8ab0b246dc81120146dc8180dd001e', '0', NULL, NULL, 'admin', '2016-04-13 11:51:22', NULL, '管理员');

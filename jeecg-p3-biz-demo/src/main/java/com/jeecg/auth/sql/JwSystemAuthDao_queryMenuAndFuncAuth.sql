@@ -1,0 +1,1 @@
+SELECT DISTINCT * FROM jp_demo_auth WHERE 1=1 ORDER BY id ASC

@@ -1,0 +1,31 @@
+AES加密时抛出java.security.InvalidKeyException: Illegal key size or default parameter
+
+博客分类： java基础
+ 
+来源：http://blog.csdn.net/shangpusp/article/details/7416603 
+使用AES加密时，当密钥大于128时，代码会抛出java.security.InvalidKeyException: Illegal key size or default parameters 
+
+Illegal key size or default parameters是指密钥长度是受限制的，java运行时环境读到的是受限的policy文件。文件位于${java_home}/jre/lib/security 
+
+这种限制是因为美国对软件出口的控制。 
+
+
+解决办法： 
+
+去掉这种限制需要下载Java Cryptography Extension (JCE) Unlimited Strength Jurisdiction Policy Files.网址如下。 
+
+下载包的readme.txt 有安装说明。就是替换${java_home}/jre/lib/security/ 下面的local_policy.jar和US_export_policy.jar 
+
+jdk 5: http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-java-plat-419418.html#jce_policy-1.5.0-oth-JPR 
+
+jdk6: http://www.oracle.com/technetwork/java/javase/downloads/jce-6-download-429243.html 
+
+另外参考：http://www.cnblogs.com/freeliver54/archive/2011/10/08/2202136.html 
+
+javax.crypto.IllegalBlockSizeException: Input length not multiple of 16 bytes 
+        at com.sun.crypto.provider.SunJCE_f.a(DashoA13*..) 
+        at com.sun.crypto.provider.SunJCE_f.b(DashoA13*..) 
+        at com.sun.crypto.provider.SunJCE_f.b(DashoA13*..) 
+        at com.sun.crypto.provider.AESCipher.engineDoFinal(DashoA13*..) 
+        at javax.crypto.Cipher.doFinal(DashoA13*..) 
+要解决如上异常，可以通过补全传入加密内容等方式进行避免。 

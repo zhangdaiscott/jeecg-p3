@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading">编辑</div>
+				<div class="panel-body">
+					<form class="form-horizontal" role="form" id="dailogForm" action="$!{basePath}/demo/jpDemoOrderMain.do?doEdit" method="POST">
+						<input type="hidden" id="btn_sub" class="btn_sub" />
+									<input type="hidden" name="id" value="$!{jpDemoOrderMain.id}"/>
+									<div class="form-group mno">
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">订单号</label>
+										<div class="col-sm-4">
+											<input type="text" value="$!{jpDemoOrderMain.goOrderCode}" ajaxurl="$!{basePath}/demo/jpDemoOrderMain.do?checkOrderCode&id=$!{jpDemoOrderMain.id}" name="goOrderCode" id="goOrderCode" class="form-control" datatype="*"/>
+										</div>
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">订单类型</label>
+										<div class="col-sm-4">
+											<select name="goderType" id="goderType" class="form-control">
+                                                <option value="">--请选择--</option>
+												<option value="1" #if($!jpDemoOrderMain.goderType == "1")selected="selected"#end>普通订单</option>
+												<option value="2" #if($!jpDemoOrderMain.goderType == "2")selected="selected"#end>优质订单</option>
+											</select>
+										</div>
+									</div>
+									<div class="form-group mno">
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">顾客类型</label>
+										<div class="col-sm-4">
+											<select name="usertype" id="usertype" class="form-control">
+                                                <option value="">--请选择--</option>
+												<option value="1" #if($!jpDemoOrderMain.usertype == "1")selected="selected"#end>普通客户</option>
+												<option value="2" #if($!jpDemoOrderMain.usertype == "2")selected="selected"#end>签约客户</option>
+											</select>
+										</div>
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">联系人</label>
+										<div class="col-sm-4">
+											<input type="text" value="$!{jpDemoOrderMain.goContactName}" name="goContactName" id="goContactName" class="form-control" datatype="*"/>
+										</div>
+									</div>
+									<div class="form-group mno">
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">手机号码</label>
+										<div class="col-sm-4">
+											<input type="text" value="$!{jpDemoOrderMain.goTelphone}" name="goTelphone" id="goTelphone" class="form-control" datatype="m"/>
+										</div>
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">订单人数</label>
+										<div class="col-sm-4">
+											<input type="text" value="$!{jpDemoOrderMain.goOrderCount}" name="goOrderCount" id="goOrderCount" class="form-control" datatype="n"/>
+										</div>
+									</div>
+									<div class="form-group mno">
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">总价(不含返款)</label>
+										<div class="col-sm-4">
+											<input type="text" value="$!{jpDemoOrderMain.goAllPrice}" name="goAllPrice" id="goAllPrice" class="form-control" datatype="/^-?[1-9]+(\.\d+)?$|^-?0(\.\d+)?$|^-?[1-9]+[0-9]*(\.\d+)?$/"/>
+										</div>
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">返款</label>
+										<div class="col-sm-4">
+											<input type="text" value="$!{jpDemoOrderMain.goReturnPrice}" name="goReturnPrice" id="goReturnPrice" class="form-control" datatype="/^-?[1-9]+(\.\d+)?$|^-?0(\.\d+)?$|^-?[1-9]+[0-9]*(\.\d+)?$/"/>
+										</div>
+									</div>
+									<div class="form-group mno">
+										<label for="inputEmail3" class="col-sm-2 control-label" style="text-align:center;">备注</label>
+										<div class="col-sm-4">
+											<input type="text" value="$!{jpDemoOrderMain.goContent}"  name="goContent" id="goContent" class="form-control" datatype="*"/>
+										</div>
+									</div>
+									
+									<div class="form-group mno">
+										<ul id="tab_menu" class="nav nav-tabs">
+											<li class="active">
+												<a href="#product" data-toggle="tab">
+													产品明细
+												</a>
+                                            </li>
+											<li>
+												<a href="#custom" data-toggle="tab">
+													客户明细
+												</a>
+                                            </li>
+                                        </ul>
+										<!-- //update-begin--Author:zhangjiaqiang  Date:20160906 for：【插件demo】一对多，明细行间距太大 -->
+										<div id="tab_menu_content" class="tab-content">
+											<div class="tab-pane fade in active" id="product">
+												<button type="button" id="product_add" class="btn btn-primary">添加</button>
+												<button type="button" id="product_del" class="btn btn-danger">删除</button>
+                                                <table class="table table-striped" id="product_table" style="margin-top:15px;">
+													<thead>
+														<tr>
+                                                            <th>ID</th>
+                                                            <th>产品名称</th>
+    														<th>个数</th>
+    														<th>服务类型</th>
+    														<th>单价</th>
+    														<th>小计</th>
+    														<th>备注</th>
+														</tr>
+                                                    </thead>
+													<tbody>
+														#if($!{productEntities})
+															#foreach($!{product} in $!{productEntities})
+																#set($balance = $!{velocityCount} - 1)
+														<tr>
+															<td>
+																<input type="hidden" name="orderProductEntities[$!{balance}].id" id="orderProductEntities[$!{balance}].id" value="$!{product.id}"/>
+																<input type="checkbox" name="orderProductEntities[$!{balance}].idCheck" id="orderProductEntities$!{balance}_idCheck"  class="form-control" />
+                                                            </td>
+															<td>
+																<input type="text"  name="orderProductEntities[$!{balance}].gopProductName" value="$!{product.gopProductName}" id="orderProductEntities[$!{balance}].gopProductName" class="form-control" datatype="*"/>
+															</td>
+															<td>
+																<input type="text"  name="orderProductEntities[$!{balance}].gopCount" value="$!{product.gopCount}" id="orderProductEntities[$!{balance}].gopCount" class="form-control" datatype="/^-?[1-9]+(\.\d+)?$|^-?0(\.\d+)?$|^-?[1-9]+[0-9]*(\.\d+)?$/"/>
+															</td>
+															<td>
+																<select name="orderProductEntities[$!{balance}].gopProductType" id="orderProductEntities[$!{balance}].gopProductType" class="form-control">
+																	<option value="">--请选择--</option>
+																	<option value="1" #if($product.gopProductType == '1')selected="selected"#end>普通服务</option>
+																	<option value="2" #if($product.gopProductType == '2')selected="selected"#end>特殊服务</option>
+                                                                </select>
+															</td>
+															<td>
+																<input type="text"  name="orderProductEntities[$!{balance}].gopOnePrice" value="$!{product.gopOnePrice}" id="orderProductEntities[$!{balance}].gopOnePrice" class="form-control" datatype="/^-?[1-9]+(\.\d+)?$|^-?0(\.\d+)?$|^-?[1-9]+[0-9]*(\.\d+)?$/"/>
+															</td>
+															<td>
+																<input type="text"  name="orderProductEntities[$!{balance}].gopSumPrice" value="$!{product.gopSumPrice}" id="orderProductEntities[$!{balance}].gopSumPrice" class="form-control" datatype="/^-?[1-9]+(\.\d+)?$|^-?0(\.\d+)?$|^-?[1-9]+[0-9]*(\.\d+)?$/"/>
+															</td>
+															<td>
+																<input type="text"  name="orderProductEntities[$!{balance}].gopContent" value="$!{product.gopContent}" id="orderProductEntities[$!{balance}].gopContent" class="form-control" datatype="*"/>
+															</td>
+                                                        </tr>
+														#end
+														#end
+                                                    </tbody>
+												</table>
+											</div>
+                                            <div class="tab-pane fade" id="custom">
+												<button type="button" id="custom_add" class="btn btn-primary">添加</button>
+												<button type="button" id="custom_del" class="btn btn-danger">删除</button>
+												<table class="table table-striped" id="custom_table" style="margin-top:15px;">
+													<thead>
+														<tr>
+                                                            <th>ID</th>
+                                                            <th>姓名</th>
+    														<th>性别</th>
+    														<th>身份证号</th>
+    														<th>护照号</th>
+    														<th>业务</th>
+    														<th>备注</th>
+														</tr>
+                                                    </thead>
+													<tbody>
+														#if($!{customEntities})
+															#foreach($!{custom} in $!{customEntities})
+																#set($!{balance} = $!{velocityCount} - 1)
+														<tr>
+															<td>
+																<input type="hidden" value="$!{custom.id}" name="orderCustomEntities[$!{balance}].id" id="orderCustomEntities[$!{balance}].id"/>
+																<input type="checkbox"  name="orderCustomEntities[$!{balance}].idCheck" id="orderCustomEntities$!{balance}_idCheck" class="form-control" />
+                                                            </td>
+															<td>
+																<input type="text"  name="orderCustomEntities[$!{balance}].gocCusName" value="$!{custom.gocCusName}" id="orderCustomEntities[$!{balance}].gocCusName" class="form-control" datatype="*"/>
+															</td>
+															<td>
+																<select name="gocSex" id="gocSex" class="form-control">
+																	<option value="">--请选择--</option>
+																	<option value="1" #if($!custom.gocSex == '1') selected="selected" #end>男</option>
+																	<option value="2"  #if($!custom.gocSex == '2') selected="selected" #end>女</option>
+                                                                </select>
+															</td>
+															<td>
+																<input type="text"  name="orderCustomEntities[$!{balance}].gocIdcard" value="$!{custom.gocIdcard}" id="orderCustomEntities[$!{balance}].gocIdcard" errormsg="身份证号码错误！" class="form-control" datatype="idcard"/>
+															</td>
+															<td>
+																<input type="text"  name="orderCustomEntities[$!{balance}].gocPassportCode" value="$!{custom.gocPassportCode}" id="orderCustomEntities[$!{balance}].gocPassportCode" class="form-control" datatype="*"/>
+															</td>
+															<td>
+																<input type="text"  name="orderCustomEntities[$!{balance}].gocBussContent" value="$!{custom.gocBussContent}" id="orderCustomEntities[$!{balance}].gocBussContent" class="form-control" datatype="*"/>
+															</td>
+															<td>
+																<input type="text"  name="orderCustomEntities[$!{balance}].gocContent" value="$!{custom.gocContent}" id="orderCustomEntities[$!{balance}].gocContent" class="form-control" datatype="*"/>
+															</td>
+                                                        </tr>
+															#end
+														#end
+                                                    </tbody>
+												</table>
+											</div>
+										</div>
+										
+									</div>
+									
+						<div class="form-group mno">
+							<div class="col-sm-offset-1 col-sm-6">
+								<button type="button" class="btn btn-default" id="formReturn" data-dismiss="modal" onclick="doUrl('$!{basePath}/demo/jpDemoOrderMain.do?list')">返回</button>
+								<button type="button" class="btn btn-primary" id="formSubmit" style="display:none;">提交</button>
+							 </div>
+						</div>
+					</form>
+					
+					<!-- 客户明细模板 -->
+					<table style="display:none;">
+						<tbody id="add_order_custom_template">
+							<tr>
+								<td>
+									<input type="checkbox" name="orderCustomEntities[#index#].idCheck" id="orderCustomEntities#index#_idCheck" class="form-control" />
+                                </td>
+								<td>
+									<input type="text"  name="orderCustomEntities[#index#].gocCusName" id="orderCustomEntities[#index#].gocCusName" class="form-control" datatype="*"/>
+								</td>
+								<td>
+									<select name="orderCustomEntities[#index#].gocSex" id="orderCustomEntities[#index#].gocSex" class="form-control">
+										<option value="">--请选择--</option>
+										<option value="1">男</option>
+										<option value="2">女</option>
+                                     </select>
+								</td>
+								<td>
+									<input type="text"  name="orderCustomEntities[#index#].gocIdcard" id="orderCustomEntities[#index#].gocIdcard" errormsg="请填写正确身份证号码！" class="form-control" datatype="idcard"/>
+								</td>
+								<td>
+									<input type="text"  name="orderCustomEntities[#index#].gocPassportCode" id="orderCustomEntities[#index#].gocPassportCode" class="form-control" datatype="*"/>
+								</td>
+								<td>
+									<input type="text"  name="orderCustomEntities[#index#].gocBussContent" id="orderCustomEntities[#index#].gocBussContent" class="form-control" datatype="*"/>
+								</td>
+								<td>
+									<input type="text"  name="orderCustomEntities[#index#].gocContent" id="orderCustomEntities[#index#].gocContent" class="form-control" datatype="*"/>
+								</td>
+                             </tr>
+                        </tbody>
+                    </table>
+					<!--产品明细模板 -->
+					<table style="display:none;">
+						<tbody id="add_order_product_template">
+							<tr>
+								<td>
+									<input type="checkbox" name="orderProductEntities[#index#].idCheck" id="orderProductEntities#index#_idCheck" class="form-control" />
+                                </td>
+								<td>
+									<input type="text"  name="orderProductEntities[#index#].gopProductName" id="orderProductEntities[#index#].gopProductName" class="form-control" datatype="*"/>
+								</td>
+								<td>
+									<input type="text"  name="orderProductEntities[#index#].gopCount" id="orderProductEntities[#index#].gopCount" class="form-control" datatype="*"/>
+								</td>
+								<td>
+									<select name="orderProductEntities[#index#].gopProductType" id="orderProductEntities[#index#].gopProductType" class="form-control">
+										<option value="">--请选择--</option>
+										<option value="1">普通服务</option>
+										<option value="2">特殊服务</option>
+                                    </select>
+								</td>
+								<td>
+									<input type="text"  name="orderProductEntities[#index#].gopOnePrice" id="orderProductEntities[#index#].gopOnePrice" class="form-control" datatype="/^-?[1-9]+(\.\d+)?$|^-?#index#(\.\d+)?$|^-?[1-9]+[#index#-9]*(\.\d+)?$/"/>
+								</td>
+								<td>
+									<input type="text"  name="orderProductEntities[#index#].gopSumPrice" id="orderProductEntities[#index#].gopSumPrice" class="form-control" datatype="/^-?[1-9]+(\.\d+)?$|^-?#index#(\.\d+)?$|^-?[1-9]+[#index#-9]*(\.\d+)?$/"/>
+								</td>
+								<td>
+									<input type="text"  name="orderProductEntities[#index#].gopContent" id="orderProductEntities[#index#].gopContent" class="form-control" datatype="*"/>
+								</td>
+                            </tr>
+                        </tbody>
+                    </table>
+					<!-- //update-end--Author:zhangjiaqiang  Date:20160906 for：【插件demo】一对多，明细行间距太大 -->
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/Validform_v5.3.2.js"></script> 
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/forminit.p3.js"></script> 
+<script type="text/javascript" src="$!{basePath}/content/order/jpDemoOrderMain-add.js"></script>
+<!-- //update-begin--Author:zhangjiaqiang  Date:20160906 for：【插件demo】一对多，明细行间距太大 -->
+<script >
+jQuery(function(){
+	$('#custom_table span.Validform_checktip,#product_table span.Validform_checktip').remove();
+	$('input,select,button').attr('disabled',true);
+	$('button#formReturn').removeAttr('disabled');
+});
+</script>
+<!-- //update-end--Author:zhangjiaqiang  Date:20160906 for：【插件demo】一对多，明细行间距太大 -->

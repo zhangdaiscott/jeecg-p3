@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>${cmsData.title}</title>
+		<meta name="viewport" content="width=device-width,height=device-height,inital-scale=1.0,maximum-scale=1.0,user-scalable=no;">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+  		<link type="text/css" rel="stylesheet" href="${cmsData.basePath}/content/template/cms/default/css/cms.css" />
+	    <script type='text/javascript' src='${cmsData.basePath}/content/common/js/jquery-1.8.3.js'></script>
+	    <script type="text/javascript">
+		    $(function(){
+	    		
+	    	    //返回顶部按钮逻辑
+	    	    $('#j-gotop').on("click", function () {
+	    	        window.scrollTo(0, 0); 
+	    	    });
+		    });
+	    </script>
+	</head>
+	<body>
+		<header class="w-header" mon="type=header">
+			<a class="arrow-wrap" href="javascript:history.back()" mon="content=back">
+				<span class="arrow-left"></span>
+			</a>
+			<a href="http://www.jeewx.com/" class="home" mon="content=home"></a>
+			<div class="text">${cmsData.menu.name }</div>
+		</header>
+		<article class="p-list" mon="action=click">
+			<div id="j-goods-container">
+				<#list cmsData.articleList as article>
+				<section class="w-goods " mon="action=click&amp;type=item">
+					<a href="cmsController.do?goPage&page=article&articleid=${article.id}" class="clearfix">
+						<div class="img-wrapper">
+							<img src="${cmsData.basePath}/upload/img/cms/${article.imageHref}" width="118" height="79" style="visibility: visible;" />
+							<ul>
+								<li class="title">
+									<span class="item-name">${article.title}</span>
+								</li>
+							</ul>
+						</div>
+					</a>
+				</section>
+				</#list>
+			</div>
+			<div class="w-viewmore clearfix" mon="action=click">
+				<a href="javascript:;" id="j-gotop" class="op-btn gotop" mon="type=gotop">回到顶部</a>
+			</div>
+		</article>
+	</body>
+</html>

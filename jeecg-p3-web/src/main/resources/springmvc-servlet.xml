@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 
+	   xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:tx="http://www.springframework.org/schema/tx"	
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:aop="http://www.springframework.org/schema/aop" 
+       xsi:schemaLocation="
+       	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+    http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.1.xsd
+    ">
+
+    <!-- Spring组件扫描路径过滤 -->
+    <context:component-scan base-package="com.jeecg.*" use-default-filters="false">
+    	<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/> 
+    </context:component-scan>
+    
+    <!-- 使用应用服务器默认的Servlet处理静态资源 方案一 -->
+	<!-- <mvc:default-servlet-handler /> -->
+	<!-- 使用Spring MVC框架自己处理静态资源 方案二 -->
+	<mvc:resources location="classpath:/plug-in-ui/" mapping="/plug-in-ui/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
+    <mvc:resources location="classpath:/content/" mapping="/content/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
+    <mvc:resources location="/upload/" mapping="/upload/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
+    <mvc:resources location="/template/" mapping="/template/**" cache-period="864000" /><!-- 24 * 3600 * 10 -->
+		
+    <!-- 支持jsp -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">    
+        <property name="prefix" value="/content/plug-in/ueditor/jsp/"/> 
+        <property name="suffix" value=".jsp"/>    
+    </bean>
+    
+    <!-- 注册默认转换器 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="false">
+	       <bean class="org.springframework.http.converter.StringHttpMessageConverter">   
+	           <property name="supportedMediaTypes">   
+	               <list>   
+	                   <value>text/plain;charset=UTF-8</value>   
+	                   <value>text/html;charset=UTF-8</value>   
+	               </list>   
+	           </property>   
+	       </bean>
+	       
+	       <bean class="org.springframework.http.converter.FormHttpMessageConverter">   
+	           <property name="supportedMediaTypes">   
+	               <list>   
+	                   <value>text/html;charset=UTF-8</value>   
+	               </list>   
+	           </property>   
+	       </bean>
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                    	<value>text/plain;charset=UTF-8</value>
+                        <value>application/xml;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+	    </mvc:message-converters>   
+	</mvc:annotation-driven>
+	
+    
+    <!-- 转换器StringHttpMessageConverter的type从text改为text，subtype从plain改为html，charset从ISO-8859-1改为UTF-8 -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                        	<value>text/plain;charset=UTF-8</value>
+                            <value>text/html;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    
+   <!-- Cookie本地化解析器 -->
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="cookieName" value="_clientlocale"/>
+        <property name="defaultLocale" value="zh_CN"/>
+        <property name="cookieMaxAge" value="2147483647"/>
+    </bean>
+
+    <!-- 多部分解析器，解析file上传 -->
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <property name="maxUploadSize" value="10000000"/>
+        <property name="maxInMemorySize" value="10240" />
+    </bean>
+    
+    <!-- 异常处理 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="defaultErrorView" value="error"/><!--错误页处理-->
+        <property name="exceptionMappings">
+            <props>
+                <prop key="java.lang.Exception">error</prop> 
+            </props>
+        </property>
+    </bean>
+</beans>

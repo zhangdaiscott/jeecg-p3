@@ -1,0 +1,47 @@
+开发环境入门步骤：
+ 第一步：创建Mysql数据库jeecg-p3(UTF-8编码)，执行每个插件项目数据库脚本
+       {插件项目}/doc/sql/{插件项目脚本}.sql
+ 第二步：采用maven方式启动项目 (jeecg-p3-web)
+             项目右建->debug as->debug configurations->选中jeecg-p3-web项目->输入命令：tomcat:run
+             注意：update snapshots需要选中，官方会不断更新底层包
+ 第三步：访问项目地址
+      http://localhost/jeecg-p3-web
+ 
+ 
+  
+  
+通用方法（与jeecg集成使用）：
+1.获取jeecg登录用户
+   LoginUser u = ContextHolderUtils.getLoginSessionUser();  
+2.获取页面访问按钮权限
+   Set<String> operationCodes = ContextHolderUtils.getPageSelectOperationCodes;
+3.获取页面访问数据权限SQL
+   String pageDataAuthorSQL = ContextHolderUtils.getPageDataAuthorSQL();
+4.获取页面访问数据权限CODES
+   Set<String> pageDataAuthorCodes = ContextHolderUtils.getPageDataAuthorCodes();
+   
+   
+标签：
+[1].下拉字典标签
+	#selectDictTag("sex", "sex","")
+	第一个参数 :类型组编码
+	第二个参数 :id和name
+	第三个参数 :默认值 
+[2].下拉表标签
+    #selectTableTag("auth_id","auth_name","jw_auth","","");
+	第1个参数 ：表字段（用于下拉选择value）
+	第2个参数 ：表字段（用于下拉文本显示）
+	第3个参数 ：表名
+	第4个参数 ：id和name（页面控件）
+	第5个参数 ：默认值
+    
+[3].数据权限标签:页面元素权限控制
+    #AuthFilterTag()
+          说明：无参数   ，在需要进行权限控制的页面最下面添加该标签（权限配置规则参考jeecg）
+          
+[4].数据权限标签:操作码权限控制
+    #AuthOperateTag("myCode")
+    //TODO 需要控制的页面代码
+    #end
+        说明：需要对上面的myCode操作码控制时,权限配置编码为 myCode
+	

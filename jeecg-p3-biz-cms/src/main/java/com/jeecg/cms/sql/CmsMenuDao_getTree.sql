@@ -1,0 +1,1 @@
+SELECT * FROM cms_menu AS cm
