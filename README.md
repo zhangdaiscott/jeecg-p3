@@ -23,7 +23,7 @@ Jeecg-P3 微服务框架（插件开发与容器技术最佳实践）
 【JEECG插件开发】
 
 * 在线演示：[http://yun.jeecg.org](http://yun.jeecg.org)
-* [开发环境搭建文档](http://www.jeecg.org/forum.php?mod=viewthread&tid=3157&extra=page%3D1)
+* 入门必读：[开发环境搭建文档](http://blog.csdn.net/zhangdaiscott/article/details/51896686)
 * [Jeecg-p3开发入门视频](http://www.jeecg.org/forum.php?mod=viewthread&tid=3173&extra=page%3D1)
 
 
