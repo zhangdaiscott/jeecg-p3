@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>JEECG-P3微服务框架</title>
+
+    <meta name="keywords" content="微服务框架，JEECG,后台bootstrap框架,jeecg-p3,后台HTML,java快速开发平台">
+    <meta name="description" content="JEECG-P3微服务框架，业务组件以JAR方式提供，插件式、松耦合、可插拔、支持独立部署，也支持与Jeecg平台集成部署">
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link href="$!{basePath}/plug-in-ui/hplus/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="$!{basePath}/plug-in-ui/hplus/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link rel="stylesheet" href="$!{basePath}/plug-in-ui/hplus/css/font-awesome.min.css" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="$!{basePath}/plug-in-ui/hplus/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+    <!-- Sweet Alert -->
+    <link href="$!{basePath}/plug-in-ui/hplus/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="$!{basePath}/plug-in-ui/hplus/css/animate.css" rel="stylesheet">
+    <link href="$!{basePath}/plug-in-ui/hplus/css/style.css?v=4.1.0" rel="stylesheet">
+</head>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<div id="wrapper">
+    #parse("content/${projectName}/main/menu.vm")
+	#parse("content/${projectName}/main/right.vm")
+    #*<div  class="col-md-10">
+        <iframe width="100%" height="600px" id="center" onload="javascript:dyniframesize('center');"  src="$!{basePath}/system/back.do?home" style="border:1px #fff solid; background:#ffffff;"></iframe>
+    </div>*#
+</div>
+<!-- 全局js -->
+<script src="$!{basePath}/plug-in-ui/hplus/js/jquery.min.js?v=2.1.4"></script>
+<script src="$!{basePath}/plug-in-ui/hplus/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/layer/layer.min.js"></script>
+
+<!-- 自定义js -->
+<script src="$!{basePath}/plug-in-ui/hplus/js/hplus.js?v=4.1.0"></script>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/hplus/js/contabs.js"></script>
+<!-- 第三方插件 -->
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/pace/pace.min.js"></script>
+<!-- Sweet alert -->
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="$!{basePath}/content/plug-in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
+<!-- 弹出TAB -->
+#*<script type="text/javascript" src="$!{basePath}/content/plug-in/hplus/hplus-tab.js"></script>*#
+
+</body>
+</html>

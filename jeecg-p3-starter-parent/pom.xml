@@ -1,0 +1,695 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<inceptionYear>2015</inceptionYear>
+	<name>jeecg-p3-starter-parent</name>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.jeecgframework.p3</groupId>
+	<artifactId>jeecg-p3-starter-parent</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+
+	<repositories>
+		<repository>
+			<id>aliyun</id>
+			<name>aliyun Repository</name>
+			<url>http://maven.aliyun.com/nexus/content/groups/public</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jeecg</id>
+			<name>jeecg Repository</name>
+			<url>http://maven.jeecg.org/nexus/content/repositories/jeecg</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>jeecg-snapshots</id>
+			<name>jeecg-snapshots Repository</name>
+			<url>http://maven.jeecg.org/nexus/content/repositories/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<distributionManagement>
+		<repository>
+			<id>jeecg</id>
+			<name>jeecg Repository</name>
+			<url>http://maven.jeecg.com:8090/nexus/content/repositories/jeecg</url>
+		</repository>
+		<snapshotRepository>
+			<id>jeecg-snapshots</id>
+			<name>jeecg Snapshot Repository</name>
+			<url>http://maven.jeecg.com:8090/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<properties>
+		<org.springframework.version>4.0.9.RELEASE</org.springframework.version>
+		<!-- json -->
+		<json-lib.version>2.1</json-lib.version>
+		<fastjson-lib.version>1.2.15</fastjson-lib.version>
+		<gson.version>2.2.4</gson.version>
+		<!-- velocity -->
+		<velocity.version>1.6.4</velocity.version>
+		<velocity-tools.version>2.0</velocity-tools.version>
+
+		<commons-collections.version>3.2.1</commons-collections.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-logging.version>1.0.4</commons-logging.version>
+		<commons-fileupload.version>1.2.1</commons-fileupload.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-codec.version>1.5</commons-codec.version>
+		<commons-pool.version>1.5.4</commons-pool.version>
+		<commons-dbcp.version>1.4</commons-dbcp.version>
+
+		<slf4j.version>1.6.1</slf4j.version>
+		<javassist.version>3.15.0-GA</javassist.version>
+		<mysql.version>5.1.27</mysql.version>
+
+		<druid.version>1.1.9</druid.version>
+		<freemarker.version>2.3.19</freemarker.version>
+		<httpclient.version>4.1.3</httpclient.version>
+		<commons-httpclient.version>3.0.1</commons-httpclient.version>
+
+		<cglib.version>2.2</cglib.version>
+		<aspectj.version>1.6.9</aspectj.version>
+		<jackson.version>1.9.4</jackson.version>
+
+		<ehcache.version>2.4.3</ehcache.version>
+		<servlet-api.version>3.0.1</servlet-api.version>
+
+		<!-- minidao -->
+		<minidao.version>1.6.4</minidao.version>
+		<kisso.version>3.6.11</kisso.version>
+
+		<lucene.version>5.3.1</lucene.version>
+		<junit.version>4.7</junit.version>
+
+		<!-- mongodb -->
+		<spring-data-mongodb.version>1.9.5.RELEASE</spring-data-mongodb.version>
+		<mongo.version>2.12.5</mongo.version>
+		<morphia.version>0.110</morphia.version>
+
+		<!-- poi -->
+		<poi.version>3.9</poi.version>
+		<!-- 二维码 -->
+		<zxing.version>3.3.0</zxing.version>
+		
+		<!-- jeewx-api -->
+		<jeewx-api.version>1.2.0</jeewx-api.version>
+		<xstream.version>1.4.4</xstream.version>
+		
+		<!-- dom4j -->
+		<dom4j.version>1.6.1</dom4j.version>
+		<xom.version>1.1</xom.version>
+		<quartz.version>1.6.2</quartz.version>
+
+		<!-- jeecg-p3-core -->
+		<jeecg-p3-core.version>1.0.0</jeecg-p3-core.version>
+		<jeecg-p3-start-quick.version>1.0.0</jeecg-p3-start-quick.version>
+		<!-- jeecg-p3-util -->
+		<jeecg-p3-generate.version>1.0.0</jeecg-p3-generate.version>
+		<!-- jeecg-p3-biz 插件业务模块 -->
+		<jeecg-p3-base-system.version>1.0.0</jeecg-p3-base-system.version>
+		<jeecg-p3-biz-demo.version>1.0.2</jeecg-p3-biz-demo.version>
+		<jeecg-p3-biz-chat.version>1.0.3</jeecg-p3-biz-chat.version>
+		<jeecg-p3-biz-mail.version>1.0.0</jeecg-p3-biz-mail.version>
+		<jeecg-p3-biz-cms.version>1.0.0</jeecg-p3-biz-cms.version>
+		<jeecg-p3-biz-oa.version>1.0.0</jeecg-p3-biz-oa.version>
+		<jeecg-p3-common-timetask.version>1.0.0</jeecg-p3-common-timetask.version>
+
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.sql</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	</build>
+
+	<dependencies>
+		<!-- servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet-api.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- websocket -->
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+			<version>1.1</version>
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- Apache Velocity -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity</artifactId>
+				<version>${velocity.version}</version>
+			</dependency>
+			<!-- velocity-tools -->
+			<dependency>
+				<groupId>org.apache.velocity</groupId>
+				<artifactId>velocity-tools</artifactId>
+				<version>${velocity-tools.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.struts</groupId>
+						<artifactId>struts-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.struts</groupId>
+						<artifactId>struts-taglib</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.apache.struts</groupId>
+						<artifactId>struts-tiles</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>sslext</groupId>
+						<artifactId>sslext</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-collections</groupId>
+						<artifactId>commons-collections</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>velocity</groupId>
+						<artifactId>velocity</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.servlet</groupId>
+						<artifactId>servlet-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>dom4j</groupId>
+						<artifactId>dom4j</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!--Apache Commons -->
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>${commons-logging.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-lang</groupId>
+				<artifactId>commons-lang</artifactId>
+				<version>${commons-lang.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-collections</groupId>
+				<artifactId>commons-collections</artifactId>
+				<version>${commons-collections.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-codec</groupId>
+				<artifactId>commons-codec</artifactId>
+				<version>${commons-codec.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-pool</groupId>
+				<artifactId>commons-pool</artifactId>
+				<version>${commons-pool.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-dbcp</groupId>
+				<artifactId>commons-dbcp</artifactId>
+				<version>${commons-dbcp.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.javassist</groupId>
+				<artifactId>javassist</artifactId>
+				<version>${javassist.version}</version>
+			</dependency>
+
+			<!--Logger Support -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-log4j12</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+
+			<!--mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+				<scope>runtime</scope>
+			</dependency>
+
+			<!-- freemarker-null <dependency> <groupId>org.jeecgframework</groupId> 
+				<artifactId>freemarker-null</artifactId> <version>2.3.19</version> </dependency> -->
+			<dependency>
+				<groupId>org.freemarker</groupId>
+				<artifactId>freemarker</artifactId>
+				<version>${freemarker.version}</version>
+			</dependency>
+
+			<!-- HttpClient -->
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpclient</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcore</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpmime</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.httpcomponents</groupId>
+				<artifactId>httpcore-nio</artifactId>
+				<version>${httpclient.version}</version>
+			</dependency>
+
+			<!-- commons-httpclient是一个遗留版本，现在官方已经不推荐使用了 -->
+			<dependency>
+			  <groupId>commons-httpclient</groupId>
+			  <artifactId>commons-httpclient</artifactId>
+			  <version>${commons-httpclient.version}</version>
+			</dependency>
+		
+			<dependency>
+				<groupId>cglib</groupId>
+				<artifactId>cglib</artifactId>
+				<version>${cglib.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+
+			<!-- jackson -->
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-mapper-asl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.codehaus.jackson</groupId>
+				<artifactId>jackson-core-asl</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<version>${json-lib.version}</version>
+				<classifier>jdk15</classifier>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>commons-collections</groupId>
+						<artifactId>commons-collections</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson-lib.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+				<version>${gson.version}</version>
+			</dependency>
+
+			<!-- springmvc -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-webmvc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-aop</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context</artifactId>
+				<version>${org.springframework.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-core</artifactId>
+				<version>${org.springframework.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-beans</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-context-support</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-jdbc</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-tx</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-web</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<!-- websocket -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-websocket</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-messaging</artifactId>
+				<version>${org.springframework.version}</version>
+			</dependency>
+			<!-- ehcache -->
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-core</artifactId>
+				<version>${ehcache.version}</version>
+			</dependency>
+			<!-- lucene -->
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-core</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-analyzers-common</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-queryparser</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+			<!-- 高亮 -->
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-highlighter</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+			<!-- 中文分词器 -->
+			<dependency>
+				<groupId>org.apache.lucene</groupId>
+				<artifactId>lucene-analyzers-smartcn</artifactId>
+				<version>${lucene.version}</version>
+			</dependency>
+
+			<!-- junit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+			</dependency>
+
+			<!-- mongodb -->
+			<dependency>
+				<groupId>org.springframework.data</groupId>
+				<artifactId>spring-data-mongodb</artifactId>
+				<version>${spring-data-mongodb.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mongodb</groupId>
+				<artifactId>mongo-java-driver</artifactId>
+				<version>${mongo.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mongodb.morphia</groupId>
+				<artifactId>morphia</artifactId>
+				<version>${morphia.version}</version>
+			</dependency>
+
+			<!-- poi -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml-schemas</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-scratchpad</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+
+			<!-- 二维码 -->
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>core</artifactId>
+				<version>${zxing.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>javase</artifactId>
+				<version>${zxing.version}</version>
+			</dependency>
+			
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>${xstream.version}</version>
+			</dependency>
+			
+			<!-- dom4j -->
+			<dependency>
+				<groupId>dom4j</groupId>
+				<artifactId>dom4j</artifactId>
+				<version>${dom4j.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>xml-apis</groupId>
+						<artifactId>xml-apis</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			
+			<!-- Jeewx-api -->
+			<dependency>
+			  <groupId>org.jeewx</groupId>
+			  <artifactId>jeewx-api</artifactId>
+			  <version>${jeewx-api.version}</version>
+			  <exclusions>
+			  	<exclusion>
+			  		<groupId>org.freemarker</groupId>
+			  		<artifactId>freemarker</artifactId>
+			  	</exclusion>
+			  </exclusions>
+			</dependency>
+			
+			<dependency>
+				<groupId>xom</groupId>
+				<artifactId>xom</artifactId>
+				<version>${xom.version}</version>
+			</dependency>
+			
+			<!-- quartz -->
+			<dependency>
+				<groupId>com.springsource</groupId>
+				<artifactId>org.quartz</artifactId>
+				<version>${quartz.version}</version>
+			</dependency>
+
+			<!-- kisso begin -->
+			<dependency>
+				<groupId>com.baomidou</groupId>
+				<artifactId>kisso</artifactId>
+				<version>${kisso.version}</version>
+			</dependency>
+			<!-- kisso end -->
+
+			<!-- minidao -->
+			<dependency>
+				<groupId>org.jeecgframework</groupId>
+				<artifactId>minidao-pe</artifactId>
+				<version>${minidao.version}</version>
+			</dependency>
+
+			<!-- p3 core -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-core</artifactId>
+				<version>${jeecg-p3-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-core-ui</artifactId>
+				<version>${jeecg-p3-core.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.jeecgframework.p3</groupId>
+						<artifactId>jeecg-p3-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-core-api</artifactId>
+				<version>${jeecg-p3-core.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.jeecgframework.p3</groupId>
+						<artifactId>jeecg-p3-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<!-- p3 core -->
+			<!-- jeecg-p3-start-quick -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-start-quick</artifactId>
+				<version>${jeecg-p3-start-quick.version}</version>
+			</dependency>
+
+			<!-- jeecg-p3 代码生成器 -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-generate</artifactId>
+				<version>${jeecg-p3-generate.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.jeecgframework.p3</groupId>
+						<artifactId>jeecg-p3-core</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- 插件：P3独立系统管理，菜单管理&访问权限 -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-base-system</artifactId>
+				<version>${jeecg-p3-base-system.version}</version>
+			</dependency>
+			<!-- 插件： 我的邮箱 -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-biz-mail</artifactId>
+				<version>${jeecg-p3-biz-mail.version}</version>
+			</dependency>
+			<!-- 插件: CMS支持小程序 -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-biz-cms</artifactId>
+				<version>${jeecg-p3-biz-cms.version}</version>
+			</dependency>
+			<!-- 插件:DEMO -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-biz-demo</artifactId>
+				<version>${jeecg-p3-biz-demo.version}</version>
+			</dependency>
+			<!-- 插件:在线聊天 -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-biz-chat</artifactId>
+				<version>${jeecg-p3-biz-chat.version}</version>
+			</dependency>
+			<!-- 插件:OA案例 -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-biz-oa</artifactId>
+				<version>${jeecg-p3-biz-oa.version}</version>
+			</dependency>
+			<!-- common 定时任务模块 -->
+			<dependency>
+				<groupId>org.jeecgframework.p3</groupId>
+				<artifactId>jeecg-p3-common-timetask</artifactId>
+				<version>${jeecg-p3-common-timetask.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+</project>

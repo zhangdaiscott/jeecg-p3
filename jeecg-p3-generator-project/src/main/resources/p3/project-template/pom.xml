@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>jeecg-p3-biz-${projectName}</artifactId>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+	
+	<!-- 公共资源版本父POM -->
+	<parent>
+		<groupId>org.jeecgframework.p3</groupId>
+		<artifactId>jeecg-p3-starter-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+		<relativePath>../parent/pom.xml</relativePath>
+	</parent>
+
+	<dependencies>
+		<!-- 引入jeecg-p3开发依赖jar -->
+		<dependency>
+			<groupId>org.jeecgframework.p3</groupId>
+			<artifactId>jeecg-p3-start-quick</artifactId>
+		</dependency>
+	</dependencies>
+</project>
+
+

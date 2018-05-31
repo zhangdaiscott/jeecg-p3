@@ -1,0 +1,5 @@
+--author:wangkun ---start--date:20160924 for:TASK #1364 【平台】将jeecg-p3平台UI，改造跟jeecg一样
+src\main\resources\p3\project-template\src\main\resources\content\${projectName}\main\index.vm
+src\main\resources\p3\project-template\src\main\resources\content\${projectName}\main\menu.vm
+src\main\resources\p3\project-template\src\main\resources\content\${projectName}\main\right.vm
+--author:wangkun ---start--date:20160924 for:TASK #1364 【平台】将jeecg-p3平台UI，改造跟jeecg一样
