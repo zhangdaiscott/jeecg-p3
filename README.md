@@ -35,10 +35,8 @@ Jeecg-P3 微服务框架
 #### 技术交流
 
 * 入门文档：[http://doc.oschina.net/jeecg-p3](http://doc.oschina.net/jeecg-p3)
-* 入门视频：[http://doc.oschina.net/jeecg-p3](http://doc.oschina.net/jeecg-p3)
-* 在线演示：[http://yun.jeecg.org](http://yun.jeecg.org)
+* 入门视频：[http://doc.oschina.net/jeecg-p3?t=292669](http://doc.oschina.net/jeecg-p3?t=292669)
 * QQ技术交流群: 286263896
-* 技术论坛：[www.jeecg.org](http://www.jeecg.org)
 
 	
 #### 效果图：
