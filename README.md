@@ -38,6 +38,7 @@ Jeecg-P3 微服务框架
 * 入门文档：[http://jeecg-p3.mydoc.io](http://jeecg-p3.mydoc.io)
 * 入门视频：[http://jeecg-p3.mydoc.io/?t=292669](http://jeecg-p3.mydoc.io/?t=292669)
 * QQ技术交流群: 286263896
+* 下载更多插件：[http://yun.jeecg.org](http://yun.jeecg.org)
 
 	
 #### 效果图：
