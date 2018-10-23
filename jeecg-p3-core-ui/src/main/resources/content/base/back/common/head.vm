@@ -1,0 +1,47 @@
+<head>
+    <title>Jeecg-P3插件开发平台</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+##    引入css文件
+	<link href="$!{basePath}/plug-in-ui/css/bootstrap.css" rel="stylesheet">
+    <link href="$!{basePath}/plug-in-ui/css/style.css" rel="stylesheet">
+    <link href="$!{basePath}/plug-in-ui/css/zTreeStyle/zTreeStyle.css" type="text/css" rel="stylesheet"/>
+	<link href="$!{basePath}/plug-in-ui/css/mycss/kongjian.css" rel="stylesheet">
+	## update--begin--author:zhangjiaqiang date:20170524 for:美化p3列表页面的按钮
+    <link rel="stylesheet" href="$!{basePath}/plug-in-ui/hplus/css/font-awesome.css"/>
+	<style>
+		.table tr th:first-child input[type="checkbox"],
+		.table tr td:first-child input[type="checkbox"] {
+			width:14.5px;
+			height:14.5px;
+			margin: 0 0 0;
+		}
+    </style>
+	
+    ## update--end--author:zhangjiaqiang date:20170524 for:美化p3列表页面的按钮
+
+##    引入js文件
+    <script type="text/javascript" src="$!{basePath}/plug-in-ui/js/iFrameResize.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/jquery-1.9.1.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/respond.min.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/bootstrap.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/common.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/jquery.form.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/scrollNav.js"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/js/My97DatePicker/WdatePicker.js" language="javascript"></script>
+	<script type="text/javascript" src="$!{basePath}/plug-in-ui/layer/layer.js" language="javascript"></script>
+	## update--begin--author:zhangjiaqiang date:20170617 for:修订包含有checkbox表格第一列的宽度
+	<script >
+		$(function(){
+			$(".table tr td:first-child input[type='checkbox']").each(function(){
+				$(this).parent().css("text-align","center");
+				$(this).parent().css("width","30px");
+			});
+			$(".table tr th:first-child input[type='checkbox']").each(function(){
+				$(this).parent().css("text-align","center");
+				$(this).parent().css("width","30px");
+			});
+		});
+    </script>
+	## update--end--author:zhangjiaqiang date:20170617 for:修订包含有checkbox表格第一列的宽度
+</head>

@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>jeecg-p3-core-ui</artifactId>
+	<version>1.0.1</version>
+	<packaging>jar</packaging>
+	
+	<parent>
+		<groupId>org.jeecgframework.p3</groupId>
+		<artifactId>jeecg-p3-starter-parent</artifactId>
+		<version>1.0.0-SNAPSHOT</version>
+	</parent>
+	
+	<distributionManagement>
+	  	<repository>
+            <id>jeecg</id>
+            <name>jeecg Repository</name>
+            <url>http://maven.jeecg.com:8090/nexus/content/repositories/jeecg</url>
+        </repository>
+        <snapshotRepository>
+	        <id>jeecg-snapshots</id>
+            <name>jeecg Snapshot Repository</name>
+            <url>http://maven.jeecg.com:8090/nexus/content/repositories/snapshots/</url>
+	    </snapshotRepository>
+	</distributionManagement>
+    
+    <dependencies>
+		<dependency>
+			<groupId>org.jeecgframework.p3</groupId>
+			<artifactId>jeecg-p3-core</artifactId>
+		</dependency>
+	</dependencies>
+</project>

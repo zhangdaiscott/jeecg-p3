@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>JEECG微服务开发平台</title>
+
+    <meta name="keywords" content="微服务框架，JEECG,后台bootstrap框架,jeecg-p3,后台HTML,java快速开发平台">
+    <meta name="description" content="JEECG-P3微服务框架，业务组件以JAR方式提供，插件式、松耦合、可插拔、支持独立部署，也支持与Jeecg平台集成部署">
+
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link href="$!{basePath}/plug-in-ui/hplus/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="$!{basePath}/plug-in-ui/hplus/css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link rel="stylesheet" href="$!{basePath}/plug-in-ui/hplus/css/font-awesome.min.css" />
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="$!{basePath}/plug-in-ui/hplus/css/font-awesome-ie7.min.css" />
+    <![endif]-->
+    <!-- Sweet Alert -->
+    <link href="$!{basePath}/plug-in-ui/hplus/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="$!{basePath}/plug-in-ui/hplus/css/animate.css" rel="stylesheet">
+    <link href="$!{basePath}/plug-in-ui/hplus/css/style.css?v=4.1.0" rel="stylesheet">
+	<!-- 自动检索 -->
+
+</head>
+<body class="gray-bg">
+<div class="row  border-bottom white-bg dashboard-header">
+    <div class="col-sm-12">
+        <blockquote class="text-warning" style="font-size:14px"><h2>Jeecg-P3插件开发框架</h2>
+            <br>特点：业务组件以JAR方式提供，插件模式、松耦合、可插拔、支持独立部署，可以无缝集成Jeecg平台中。
+            <br>
+        </blockquote>
+        <hr>
+    </div>
+    <div class="col-sm-3">
+        <h2>Hello,Guest</h2>
+        <small>移动设备访问请扫描以下二维码：</small>
+        <br>
+        <br>
+        <img src="$!{basePath}/content/plug-in/img/jeecg.jpg" width="100%" style="max-width:264px;">
+        <br>
+    </div>
+    <div class="col-sm-5" >
+        <h3>
+			【架构说明】
+        </h3>
+        <pre style="box-sizing: inherit; overflow: auto; font-family: Menlo, &#39;Liberation Mono&#39;, Consolas, &#39;DejaVu Sans Mono&#39;, &#39;Ubuntu Mono&#39;, &#39;Courier New&#39;, &#39;andale mono&#39;, &#39;lucida console&#39;, monospace; margin-top: 0px; margin-bottom: 15px; border: none; font-size: 13px; line-height: 19px; padding: 6px 10px; border-radius: 3px; color: rgb(51, 51, 51); background-color: rgb(250, 250, 250);">
+1.Jeecg-P3采用SpringMvc+Minidao+Velocity+Maven(构建)框架技术
+2.插件引入方式
+    pom.xml文件中，引入新开发的插件
+    &lt;!-- P3 jar --&gt;
+    &lt;dependency&gt;
+	&lt;groupId&gt;org.p3framework&lt;/groupId&gt;
+	&lt;artifactId&gt;jeecg-p3-biz-demo&lt;/artifactId&gt;
+	&lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;/dependency&gt;
+3.项目启动访问方式：
+    采用maven方式，启动Web项目
+    http://localhost/jeecg-p3-web/{页面访问地址}
+4.页面层面不能采用jsp，需要采用模板语言Velocity
+5.插件式开发,每个业务组件以jar包方式提供
+6.数据库配置文件：
+  jeecg-p3-web/src/main/resources/dbconfig.properties
+		</pre>
+         <p>
+             <span class="label label-warning">开源     &nbsp; | &nbsp; 免费  | &nbsp; 更多插件</span>
+         </p>   
+        <br>
+    </div>
+    <div class="col-sm-4">
+        <h3>【项目说明】</h3>
+        <pre style="box-sizing: inherit; overflow: auto; font-family: Menlo, &#39;Liberation Mono&#39;, Consolas, &#39;DejaVu Sans Mono&#39;, &#39;Ubuntu Mono&#39;, &#39;Courier New&#39;, &#39;andale mono&#39;, &#39;lucida console&#39;, monospace; margin-top: 0px; margin-bottom: 15px; border: none; font-size: 13px; line-height: 23px; padding: 6px 10px; border-radius: 3px; color: rgb(51, 51, 51); background-color: rgb(250, 250, 250);">
+jeecg-p3-web               | 启动主项目
+jeecg-p3-biz-demo          | 插件项目DEMO
+jeecg-p3-project-generator | 生成插件项目工具
+		</pre>
+    </div>
+    <div class="col-sm-4">
+        <h3>【技术交流】</h3>
+            <ul class="task-list list-paddingleft-2" style="box-sizing: inherit; font-size: 14px; line-height: 33px; padding-left: 30px; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; white-space: normal; background-color: rgb(250, 250, 250);">
+        <li>
+            <p>
+    			论坛：<a href="http://www.jeecg.org/" target="_BLANK" style="box-sizing: inherit; color: rgb(65, 131, 196); text-decoration: none; cursor: pointer !important; word-wrap: break-word; margin-top: 0px; margin-bottom: 0px; background: transparent;">www.jeecg.org</a>
+            </p>
+        </li>
+        <li>
+            <p>
+    			源码下载：<a href="http://git.oschina.net/jeecg/jeecg-p3" target="_BLANK" style="box-sizing: inherit; color: rgb(65, 131, 196); text-decoration: none; cursor: pointer !important; word-wrap: break-word; margin-top: 0px; margin-bottom: 0px; background: transparent;">http://git.oschina.net/jeecg/jeecg-p3</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                QQ交流群①： 293658367
+            </p>
+        </li>
+        </ul>
+		<br>
+	    <p>
+        	<a class="btn btn-success btn-outline" href="http://yun.jeecg.org" target="_blank">
+                <i class="fa fa-cloud"></i> 云应用中心
+            </a>
+            <a class="btn btn-white btn-bitbucket" href="http://www.jeecg.org/" target="_blank">
+                <i class="fa fa-qq"> </i> 联系我们
+            </a>
+            <a class="btn btn-white btn-bitbucket" href="http://blog.csdn.net/zhangdaiscott" target="_blank">
+                <i class="fa fa-home"></i> 官方博客
+            </a>
+        </p>
+    </div>
+</div>
+<!-- 全局js -->
+<script src="$!{basePath}/plug-in-ui/hplus/js/jquery.min.js?v=2.1.4"></script>
+<script src="$!{basePath}/plug-in-ui/hplus/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/layer/layer.min.js"></script>
+
+<!-- 自定义js -->
+<script src="$!{basePath}/plug-in-ui/hplus/js/hplus.js?v=4.1.0"></script>
+<script type="text/javascript" src="$!{basePath}/plug-in-ui/hplus/js/contabs.js"></script>
+<!-- 第三方插件 -->
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/pace/pace.min.js"></script>
+<!-- Sweet alert -->
+<script src="$!{basePath}/plug-in-ui/hplus/js/plugins/sweetalert/sweetalert.min.js"></script>
+<script src="$!{basePath}/content/plug-in/jquery-plugs/storage/jquery.storageapi.min.js"></script>
+<!-- 弹出TAB -->
+#*<script type="text/javascript" src="$!{basePath}/content/plug-in/hplus/hplus-tab.js"></script>*#
+<!-- 自动检索 -->
+
+</body>
+</html>

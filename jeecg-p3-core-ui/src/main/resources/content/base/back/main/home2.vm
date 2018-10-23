@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+#parse("content/base/back/common/head.vm")
+<body style='overflow:scroll;overflow-x:hidden'>
+	<div class="container bs-docs-container" style="width:100%;">
+		<div class="row">
+				<div class="panel panel-default">
+					  <div class="panel-heading">项目介绍</div>
+					  <div class="panel-body">
+						
+						<h1 style="box-sizing: inherit; font-size: 28px; margin-right: 0px; margin-bottom: 10px; margin-left: 0px; font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; line-height: 1.33em; padding: 0px; min-height: 1rem; -webkit-font-smoothing: antialiased; cursor: text; position: relative; white-space: normal; margin-top: 0px !important; ">
+    Jeecg-P3插件开发框架
+</h1>
+<p style="box-sizing: inherit; margin-top: 0px; margin-bottom: 15px; line-height: 25px; text-align: justify; word-break: break-word; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; font-size: 15px; white-space: normal; ">
+    特点：业务组件以JAR方式提供，插件模式、松耦合、可插拔、支持独立部署，可以无缝集成Jeecg平台中。
+</p>
+<p style="box-sizing: inherit; margin-top: 0px; margin-bottom: 15px; line-height: 25px; text-align: justify; word-break: break-word; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; font-size: 15px; white-space: normal; ">
+    【架构说明】
+</p>
+<pre style="box-sizing: inherit; overflow: auto; font-family: Menlo, &#39;Liberation Mono&#39;, Consolas, &#39;DejaVu Sans Mono&#39;, &#39;Ubuntu Mono&#39;, &#39;Courier New&#39;, &#39;andale mono&#39;, &#39;lucida console&#39;, monospace; margin-top: 0px; margin-bottom: 15px; border: none; font-size: 13px; line-height: 19px; padding: 6px 10px; border-radius: 3px; color: rgb(51, 51, 51); background-color: rgb(244, 244, 244);">1.Jeecg-P3 采用SpringMvc + Minidao + Velocity + Maven(构建) 框架技术
+2.插件引入方式
+    pom.xml文件中，引入新开发的插件
+    &lt;!-- P3 jar --&gt;
+    &lt;dependency&gt;
+        &lt;groupId&gt;org.p3framework&lt;/groupId&gt;
+        &lt;artifactId&gt;jeecg-p3-biz-demo&lt;/artifactId&gt;
+        &lt;version&gt;1.0.0&lt;/version&gt;
+    &lt;/dependency&gt;
+3.项目启动访问方式：
+  采用maven方式，启动Web项目
+  http://localhost/jeecg-p3-web/{页面访问地址}
+4.页面层面不能采用jsp，需要采用模板语言Velocity
+5.插件式开发,每个业务组件以jar包方式提供
+6.数据库配置文件：
+  jeecg-p3-web/src/main/resources/dbconfig.properties</pre>
+<p style="box-sizing: inherit; margin-top: 0px; margin-bottom: 15px; line-height: 25px; text-align: justify; word-break: break-word; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; font-size: 15px; white-space: normal; ">
+    【项目说明】
+</p>
+<pre style="box-sizing: inherit; overflow: auto; font-family: Menlo, &#39;Liberation Mono&#39;, Consolas, &#39;DejaVu Sans Mono&#39;, &#39;Ubuntu Mono&#39;, &#39;Courier New&#39;, &#39;andale mono&#39;, &#39;lucida console&#39;, monospace; margin-top: 0px; margin-bottom: 15px; border: none; font-size: 13px; line-height: 19px; padding: 6px 10px; border-radius: 3px; color: rgb(51, 51, 51); background-color: rgb(244, 244, 244);">jeecg-p3-web               | 启动主项目
+jeecg-p3-biz-demo          | 插件项目DEMO
+jeecg-p3-project-generator | 生成插件项目工具</pre>
+<p style="box-sizing: inherit; margin-top: 0px; margin-bottom: 15px; line-height: 25px; text-align: justify; word-break: break-word; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; font-size: 15px; white-space: normal;">
+  
+	
+<p style="box-sizing: inherit; margin-top: 0px; margin-bottom: 15px; line-height: 25px; text-align: justify; word-break: break-word; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; font-size: 15px; white-space: normal; ">
+    【技术交流】
+</p>
+<ul class="task-list list-paddingleft-2" style="box-sizing: inherit; font-size: 14px; line-height: 24px; padding-left: 30px; color: rgba(0, 0, 0, 0.8); font-family: Lato, &#39;Helvetica Neue&#39;, &#39;Microsoft YaHei&#39;, Arial, Helvetica, sans-serif; white-space: normal; background-color: rgb(250, 250, 250);">
+    <li>
+        <p>
+            论坛：<a href="http://www.jeecg.org/" target="_BLANK" style="box-sizing: inherit; color: rgb(65, 131, 196); text-decoration: none; cursor: pointer !important; word-wrap: break-word; margin-top: 0px; margin-bottom: 0px; background: transparent;">www.jeecg.org</a>
+        </p>
+    </li>
+	<li>
+        <p>
+            源码下载：<a href="http://git.oschina.net/jeecg/jeecg-p3" target="_BLANK" style="box-sizing: inherit; color: rgb(65, 131, 196); text-decoration: none; cursor: pointer !important; word-wrap: break-word; margin-top: 0px; margin-bottom: 0px; background: transparent;">http://git.oschina.net/jeecg/jeecg-p3</a>
+        </p>
+    </li>
+    <li>
+        <p>
+            QQ交流群①： 293658367
+        </p>
+    </li>
+</ul>
+<p>
+    <br/>
+</p>
+						
+				  	 </div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+
