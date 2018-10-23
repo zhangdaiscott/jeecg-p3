@@ -10,6 +10,7 @@ Jeecg-P3 微服务框架
 	jeecg-p3-starter-parent        | 父POM（管理公共资源版本号）
 	jeecg-p3-starter-web           | 启动主项目
 	jeecg-p3-generator-project 	   | 项目骨架生成工具
+	jeecg-p3-core-ui			   | UI依赖（h+、jquery等等第三方UI依赖）
     jeecg-p3-biz-helloworld        | 第一个插件例子
 
 
